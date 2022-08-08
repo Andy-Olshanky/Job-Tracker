@@ -5,7 +5,7 @@ from contact import send_email
 
 
 def jobs():
-    # send_email('Server', 'Server started', 'aolshans@temple.edu')
+    send_email('Server', 'Server started', 'aolshans@temple.edu')
     URLS = [
         'https://www.lyft.com/careers/early-talent',
         'https://www.snap.com/en-US/jobs?types=Intern',
