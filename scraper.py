@@ -5,7 +5,7 @@ from contact import send_email
 
 
 def jobs():
-    send_email('Server', 'Server started', 'aolshans@temple.edu')
+    # send_email('Server', 'Server started', 'aolshans@temple.edu')
     URLS = [
         'https://www.lyft.com/careers/early-talent',
         'https://www.snap.com/en-US/jobs?types=Intern',
@@ -32,16 +32,16 @@ def jobs():
     while not done:
         for i in range(len(URLS) - 1):
             if not available[i]:
-                print(i)
+                # print(i)
                 found = False
                 html_text = requests.get(URLS[i]).text
                 soup = BeautifulSoup(html_text, 'lxml')
-                print(html_text)
+                # print(html_text)
                 if finds[i][1] == '':
                     repos = soup.find_all(finds[i][0])
                 else:
                     repos = soup.find_all(finds[i][0], class_=finds[i][1])
-                print(repos)
+                # print(repos)
                 for repo in repos:
                     if searches[i] in repo:
                         found = True
@@ -49,15 +49,15 @@ def jobs():
 
                 if not found:
                     available[i] = True
-                    print('didnt find', i)
+                    # print('didnt find', i)
                     send_email('GO APPLY TO JOBS!', 'Job opening at ' + URLS[i], 'aolshans@temple.edu')
 
                 time.sleep(1)
 
         done = is_done(available)
-        print('cycle')
+        # print('cycle')
         if not done:
-            time.sleep(10)
+            time.sleep(30)
 
 
 
@@ -68,4 +68,3 @@ def is_done(arr):
     return True
 
 
-jobs()

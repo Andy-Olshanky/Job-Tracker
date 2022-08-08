@@ -1,6 +1,6 @@
 import smtplib
 import os
-from twilio.rest import Client
+# from twilio.rest import Client
 
 
 def send_email(subject, body, recipient):
